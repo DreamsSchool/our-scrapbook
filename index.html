@@ -91,24 +91,25 @@
     </div>
 
     <script>
-        const DreamsSchool = 'DreamsSchool';
-        const our-scrapbook = 'our-scrapbook';
-        const BRANCH = 'main';
+    const GITHUB_USERNAME = 'DreamsSchool';
+    const REPO_NAME = 'our-scrapbook';
+    const BRANCH = 'main';
 
-        async function fetchGitHubContents() {
-            try {
-                const response = await fetch(`https://api.github.com/repos/${DreamsSchool}/${our-scrapbook}/contents/images`);
-                const data = await response.json();
-                
-                const folders = data.filter(item => item.type === 'dir');
-                
-                for (const folder of folders) {
-                    await processFolder(folder);
-                }
-            } catch (error) {
-                console.error('Error fetching GitHub contents:', error);
+    async function fetchGitHubContents() {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/images`);
+            const data = await response.json();
+            
+            const folders = data.filter(item => item.type === 'dir');
+            
+            for (const folder of folders) {
+                await processFolder(folder);
             }
+        } catch (error) {
+            console.error('Error fetching GitHub contents:', error);
         }
+    }
+</script>
 
         async function processFolder(folder) {
             try {
