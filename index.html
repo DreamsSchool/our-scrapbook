@@ -186,46 +186,40 @@
         }
 
         function createMediaCard(media) {
-            const mediaCard = document.createElement('div');
-            mediaCard.className = 'media-card';
+    const mediaCard = document.createElement('div');
+    mediaCard.className = 'media-card';
 
-            const mediaWrapper = document.createElement('div');
-            mediaWrapper.className = 'media-wrapper';
+    const mediaWrapper = document.createElement('div');
+    mediaWrapper.className = 'media-wrapper';
 
-            const isVideo = /\.(mp4|mov|webm)$/i.test(media.name);
-            
-            if (isVideo) {
-                const video = document.createElement('video');
-                video.src = media.download_url;
-                video.controls = true;
-                video.preload = 'metadata';
-                mediaWrapper.appendChild(video);
+    const isVideo = /\.(mp4|mov|webm)$/i.test(media.name);
+    
+    if (isVideo) {
+        const video = document.createElement('video');
+        video.src = media.download_url;
+        video.controls = true;
+        video.preload = 'metadata';
+        mediaWrapper.appendChild(video);
 
-                const badge = document.createElement('span');
-                badge.className = 'media-type-badge';
-                badge.textContent = 'VIDEO';
-                mediaWrapper.appendChild(badge);
-            } else {
-                const img = document.createElement('img');
-                img.src = media.download_url;
-                img.alt = media.name;
-                mediaWrapper.appendChild(img);
+        const badge = document.createElement('span');
+        badge.className = 'media-type-badge';
+        badge.textContent = 'VIDEO';
+        mediaWrapper.appendChild(badge);
+    } else {
+        const img = document.createElement('img');
+        img.src = media.download_url;
+        img.alt = media.name;
+        mediaWrapper.appendChild(img);
 
-                const badge = document.createElement('span');
-                badge.className = 'media-type-badge';
-                badge.textContent = media.from_zip ? 'FROM ZIP' : 'PHOTO';
-                mediaWrapper.appendChild(badge);
-            }
+        // Removed the PHOTO badge
+    }
 
-            mediaCard.appendChild(mediaWrapper);
+    mediaCard.appendChild(mediaWrapper);
 
-            const mediaInfo = document.createElement('div');
-            mediaInfo.className = 'media-info';
-            mediaInfo.textContent = media.name;
-            mediaCard.appendChild(mediaInfo);
+    // Removed the media info section that showed the filename
 
-            return mediaCard;
-        }
+    return mediaCard;
+}
 
         // Start the process
         fetchGitHubContents();
