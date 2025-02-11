@@ -91,13 +91,13 @@
     </div>
 
     <script>
-        const GITHUB_USERNAME = 'your-username';
-        const REPO_NAME = 'your-repo-name';
+        const DreamsSchool = 'DreamsSchool';
+        const our-scrapbook = 'our-scrapbook';
         const BRANCH = 'main';
 
         async function fetchGitHubContents() {
             try {
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/images`);
+                const response = await fetch(`https://api.github.com/repos/${DreamsSchool}/${our-scrapbook}/contents/images`);
                 const data = await response.json();
                 
                 const folders = data.filter(item => item.type === 'dir');
